@@ -1,0 +1,119 @@
+<html>
+<head><title>Consensus Reality</title>
+<style type="text/css">
+body { 
+	margin: 0px; padding: 0px; 
+	font-size: 12px;
+}
+h1 {
+	text-align: center;
+	background-color: #eee;
+	line-height: 50px;
+	font-size: 25px;
+	border-bottom: 2px solid #aaa;
+}
+
+p {
+	margin: 0px;
+	margin-bottom: 0.75em;
+}
+
+h2 {
+	margin-bottom: 0.5em;
+}
+
+#somefacts, #evaluate, #add_fact {
+	margin: 10px;
+}
+
+#attribution {
+	font-size: 9px;
+	margin: 0px;
+	border-top: 1px solid #aaa;
+	font-style: italic;
+	text-align: right;
+}
+	
+</style>
+</head>
+<body>
+<h1>Consensus Reality</h1>
+<div id="somefacts">
+<h2>Some Facts</h2>
+<ul>
+{% for fact in some_facts %}
+	<li><a href="/detail?id={{ fact.key }}">{{ fact.txt|escape }}</a></li>
+{% endfor %}
+</ul>
+</div>
+
+{% if show_new %}
+<div id="add_fact">
+<h2>Add a Fact</h2>
+<p>A fact should be a simple, declarative statement, less than 100 characters.</p>
+<form method="POST">
+<input type="text" name="fact_txt" />
+<input type="submit" value="submit" />
+</form>
+{% else %}
+<p><a href="{{ login_url }}">Log In</a> to add facts, or vote on existing facts.</p>
+{% endif %}
+</div>
+
+{% if show_vote %}
+<div id="evaluate">
+<h2>Evaluate This Fact</h2>
+<p class="eval_fact"><i>&quot;{{ v_fact.txt|escape }}&quot;</i></p>
+<p>Lower numbers are "less", higher numbers are "more".</p>
+<form method="POST">
+<input type="hidden" name="v_fact_id" value="{{ v_fact.key }}" />
+<p>Is the statement above a simple declarative statement? <select name="v_factness">
+<option value=""></option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+</select></p>
+
+<p>How true is it? <select name="v_truth">
+<option value=""></option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+</select></p>
+
+<p>How important is it? <select name="v_importance">
+<option value=""></option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+</select></p>
+<p><input type="submit" value="vote" /></p>
+</form>
+</div>
+{% endif %}
+<p id="attribution">
+Comments to <a href="mailto:bruce@jhereg.net">Michael Bruce</a>
+</p>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<html>
+<head><title>Consensus Reality - Fact</title>
+<style type="text/css">
+body { margin: 0px; padding: 0px; }
+h1 {
+	text-align: center;
+	background-color: #eee;
+	line-height: 50px;
+	font-size: 25px;
+	border-bottom: 2px solid #aaa;
+}
+h1 a {
+	color: black;
+	text-decoration: none;
+}
+#content { margin: 10px; }
+</style>
+</head>
+<body>
+<h1><a href="/">Consensus Reality</a></h1>
+<div id="content">
+<h2>Fact</h2>
+<p><i>&quot;{{ fact.txt|escape }}&quot;</i></p>
+<h2>Information</h2>
+<ul>
+	<li>Truth: {{ fact.truth|escape }}</li>
+	<li>Factness: {{ fact.factness|escape }}</li>
+	<li>Importance: {{ fact.importance|escape }}</li>
+	<li>Magnitude: {{ fact.magnitude|escape }}</li>
+</ul>
+</div>
+</body>
+</html>
